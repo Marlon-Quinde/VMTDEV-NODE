@@ -15,6 +15,7 @@ const prefix: string = "/api";
 app.use(`${prefix}/auth`, authRoutes)
 
 const port: number = Number(PORT);
+console.log('El puerto es:', port);
 app.listen(port, () => {
     console.log('El servidor esta levantado en el puerto:', port);
 });
