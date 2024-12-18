@@ -1,18 +1,18 @@
 import express, { NextFunction, Request, Response } from "express";
 import { PORT } from "./environments/env";
 
+// ? Rutas del proyecto
+import authRoutes from "./modules/auth/routes";
+
 const app = express();
+
+// ? Configuracion de JSON para del proyecto 
+app.use(express.json());
 
 const prefix: string = "/api";
 
-app.get(
-  `${prefix}/auth`,
-  
-  async (req: Request, res: Response, next: NextFunction) => {
-    // ? Funcion principal
-    res.send("Hola mundo");
-  }
-);
+// ? Deficion de rutas por modulos
+app.use(`${prefix}/auth`, authRoutes)
 
 const port: number = Number(PORT);
 app.listen(port, () => {
